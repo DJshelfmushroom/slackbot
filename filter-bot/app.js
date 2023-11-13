@@ -27,7 +27,7 @@ app.message(async ({ message, say }) => {
             await app.client.chat.postMessage({
                 token: process.env.SLACK_BOT_TOKEN,
                 channel: message.user,
-                text: "Hello, fellow user. You are in violaton of Ram Networks rules. Remember that swearing is not welcome here. This incident has been reported.",
+                text: "Hello, fellow user. You are in violaton of Ram Networks rules. Remember that swearing is not welcome here. This incident has been reported.\nYour message: " + message.text,
             });
             var username;
             var realName;
@@ -43,7 +43,7 @@ app.message(async ({ message, say }) => {
             await app.client.chat.postMessage({
                 token: process.env.SLACK_BOT_TOKEN,
                 channel: "C061UC166MB",
-                text: "" + realName + " ( " + username + " ) swore: " + message.text + ". \nEmail: " + email,
+                text: "" + realName + " ( " + username + ") swore: " + message.text + ". \nEmail: " + email,
             });
         } catch (error) {
             //console.error(`Error deleting message: ${error.message}`);
