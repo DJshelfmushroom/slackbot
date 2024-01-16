@@ -7,7 +7,7 @@
     "@slack/bolt": "^3.17.1"
   },
   "scripts": {
-    "main": "node filter-bot/app.js"
+    "main": "node app.js"
   },
   "keywords": [],
   "author": "",
