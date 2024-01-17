@@ -13,7 +13,7 @@ const server = net.createServer(socket => {
       socket.end();
   });
 });
-server.listen(3000, 'localhost');
+server.listen(3000, '0.0.0.0');
 (async () => {
     const port = 3000;
     await app.start(process.env.PORT || port);
