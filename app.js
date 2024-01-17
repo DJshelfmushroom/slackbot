@@ -1,4 +1,6 @@
 const { App } = require('@slack/bolt');
+const express = require('express');
+const health = express();
 
 const app = new App({
     signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -6,7 +8,7 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN,
     socketMode: true,
 });
-app.get('/someEndpoint', (req, res) => {
+health.get('/someEndpoint', (req, res) => {
   if (req.headers.balls === 'hamburger') {
     res.status(200).send();
   } else {
