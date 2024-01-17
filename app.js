@@ -6,7 +6,13 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN,
     socketMode: true,
 });
-
+app.get('/someEndpoint', (req, res) => {
+  if (req.headers.balls === 'hamburger') {
+    res.status(200).send();
+  } else {
+    // handle other cases
+  }
+});
 (async () => {
     const port = 3000;
     await app.start(process.env.PORT || port);
@@ -46,7 +52,7 @@ app.message(async ({ message, say }) => {
                 text: "" + realName + " ( " + username + ") swore: " + message.text + ". \nEmail: " + email,
             });
         } catch (error) {
-            //console.error(`Error deleting message: ${error.message}`);
+            console.error(`Error deleting message: ${error.message}`);
         }
     }
 });
