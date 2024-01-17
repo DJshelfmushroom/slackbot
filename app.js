@@ -1,6 +1,4 @@
 const { App } = require('@slack/bolt');
-const express = require('express');
-const health = express();
 
 const app = new App({
     signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -8,13 +6,17 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN,
     socketMode: true,
 });
-health.get('/someEndpoint', (req, res) => {
-  if (req.headers.balls === 'hamburger') {
-    res.status(200).send();
-  } else {
-    // handle other cases
-  }
+const net = require('net');
+const server = net.createServer(socket => {
+  socket.on('data', data => {
+    if (data.toString() === 'PING') {
+      socket.write('HTTP/1.1 200 OK\r\n\r\n');
+      socket.end();
+    }
+  });
 });
+
+server.listen(3000, 'localhost');
 (async () => {
     const port = 3000;
     await app.start(process.env.PORT || port);
