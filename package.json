@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@coffeeandfun/google-profanity-words": "^2.1.0",
     "@slack/bolt": "^3.17.1",
     "net": "^1.0.2"
   }
