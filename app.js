@@ -71,7 +71,7 @@ app.message(async ({ message, say }) => {
             });
             await app.client.chat.postMessage({
                 token: process.env.SLACK_BOT_TOKEN,
-                channel: "C061UC166MB",
+                channel: "C074WGS366N",
                 text: "" + realName + " ( " + username + ") swore: " + message.text + ". \nEmail: " + email,
             });
         } catch (error) {
